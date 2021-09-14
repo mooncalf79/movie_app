@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types"
 import "./movie.css";
 
@@ -7,6 +8,16 @@ import "./movie.css";
 /// 타입이 정의된 Movie함수를 App.js로 보낸다.
 function Moive({year,title,summary,poster,genres}){
     return (
+        <Link to = {{
+            pathname : "/movie-detail",
+            state: {
+                year,
+                title,
+                summary, 
+                poster,
+                genres
+            }
+        }}>
     <div className = "movie">        
         <img src={poster} alt = {title} title ={title}/>
     <div className = "movie_data">
@@ -18,6 +29,7 @@ function Moive({year,title,summary,poster,genres}){
         <p className = "movie__summary">{summary.slice(0,180)}...</p>
         </div>
     </div>
+    </Link>
     );
 }
 
